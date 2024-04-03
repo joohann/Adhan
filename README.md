@@ -1,0 +1,4 @@
+- Getting prayer times from https://aladhan.com/prayer-times-api and store those in sensors with a refresh each day.
+- stream adhan to media players when it is time to pray
+- a pre-anoucment before pray
+- setting different volumes for each prayer
