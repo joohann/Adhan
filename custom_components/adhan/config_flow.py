@@ -1,8 +1,9 @@
 import secrets
+import voluptuous as vol
 from homeassistant import config_entries
 from .const import DOMAIN, NAME
 
-class AdhanConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+class AdhanConfigFlow(config_entries.ConfigFlow):
     """Config flow for Adhan."""
 
     VERSION = "1.0.0"
@@ -35,7 +36,7 @@ class AdhanConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         # Display the form for the user to input city and country
         return self.async_show_form(
             step_id="user",
-            data_schema=config_entries.CONFIG_SCHEMA.extend(
+            data_schema=vol.Schema(
                 {
                     vol.Required("city"): str,
                     vol.Required("country"): str,
