@@ -1,36 +1,23 @@
-import logging
 from homeassistant import config_entries
-from homeassistant.util.json import json_loads
-from .const import DOMAIN, CONF_CITY, CONF_COUNTRY, CONF_METHOD
+import voluptuous as vol
 
-_LOGGER = logging.getLogger(__name__)
+from .const import DOMAIN, CONF_API_KEY, CONF_LOCATION
 
 class AdhanConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-    """Handle a config flow for Adhan Prayer Times."""
-    
-    def __init__(self):
-        """Initialize the flow."""
-        self._location = None
-        self._country = None
-        self._method = None
-    
-    def load_config(self):
-        """Laad de configuratie vanuit een JSON-bestand."""
-        try:
-            with open("path/to/your/config.json", "r") as file:
-                config_data = json_loads(file.read())  # Nieuwe functie
-            return config_data
-        except Exception as e:
-            _LOGGER.error(f"Error loading configuration: {e}")
-            return None
+    """Handle a config flow for Adhan."""
 
-    def handle(self):
-        """Handle the configuration."""
-        # Configuratie logica
-        config_data = self.load_config()
-        if config_data:
-            self._location = config_data.get(CONF_CITY)
-            self._country = config_data.get(CONF_COUNTRY)
-            self._method = config_data.get(CONF_METHOD)
+    VERSION = 1
 
-        return self.async_show_form(step_id="user")
+    async def async_step_user(self, user_input=None):
+        """Handle the initial step."""
+        errors = {}
+        
+        if user_input is not None:
+            # Validatie toevoegen als nodig
+            return self.async_create_entry(title="Adhan", data=user_input)
+
+        schema = vol.Schema({
+            vol.Required(CONF_API_KEY): str,
+            vol.Required(CONF_LOCATION): str,
+        })
+        return self.async_show_form(step_id="user", data_schema=schema, errors=errors)
