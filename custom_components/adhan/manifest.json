@@ -8,5 +8,5 @@
     "codeowners": ["@joohann"],
     "config_flow": true,
     "iot_class": "cloud_polling"
-    "icon": "/local/custom_icons/icon.png"
+    "icon": "/local/custom_components/adhan/adhan_icon.png"
 }
