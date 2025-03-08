@@ -1,9 +1,9 @@
-"""Constants for the ADHAN integration."""
-
-import homeassistant.helpers.config_validation as cv
-from homeassistant.const import CONF_RESOURCES
-
 DOMAIN = "adhan"
 
-CONF_COUNTRY = "NL"
-CONF_CITY = "AMSTERDAM"
+# Gebedstijden
+PRAYER_TIMES = ["fajr", "dhuhr", "asr", "maghrib", "isha"]
+
+# Config keys
+CONF_CITY = "breukelen"
+CONF_COUNTRY = "netherlands"
+CONF_METHOD = "3"
