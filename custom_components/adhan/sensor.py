@@ -25,8 +25,9 @@ class AdhanSensor(SensorEntity):
     async def async_update(self):
         """Fetch prayer times from the API."""
         try:
+            # Juiste URL-opbouw
             url = (
-                f"https://api.aladhan.com/v1/timingsByCity?"
+                f"http://api.aladhan.com/v1/timingsByCity?"
                 f"city={self._city}&country={self._country}&method={self._method}"
             )
             response = requests.get(url).json()
