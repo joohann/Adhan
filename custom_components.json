@@ -1,12 +1,11 @@
 {
-    "intergration.adhan": {
-      "version": "0.0.1",
-      "local_location": "/custom_components/adhan/__init__.py",
-      "remote_location": "https://raw.githubusercontent.com/joohann/Adhan/main/custom_components/adhan/__init__.py",
-      "visit_repo": "https://github.com/joohann/Adhan",
-      "changelog": "https://github.com/joohann/Adhan/releases/latest",
-      "resources": [
-          "https://raw.githubusercontent.com/joohann/Adhan/main/custom_components/adhan/manifest.json"
-        ]
-    }
+  "domain": "adhan",
+  "name": "Adhan Prayer Times",
+  "documentation": "https://github.com/joohann/adhan",
+  "requirements": ["requests"],
+  "codeowners": ["@joohann"],
+  "version": "1.0.0",
+  "config_flow": true,
+  "dependencies": [],
+  "iot_class": "cloud_polling"
 }
