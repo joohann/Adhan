@@ -6,7 +6,8 @@
   "config_flow": true,
   "dependencies": [],
   "documentation": "https://github.com/joohann/ha-adhan",
-  "issue_tracker": "https://github.com/joohann/ha-adhan/issues",
+  "codeowners": ["@joohann"],
+  "iot_class": "local_polling",
   "icon": "adhan/icon.png",
   "requirements": []
 }
