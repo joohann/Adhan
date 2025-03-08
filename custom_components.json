@@ -8,5 +8,5 @@
       "resources": [
           "https://raw.githubusercontent.com/joohann/Adhan/main/custom_components/adhan/manifest.json"
         ]
-    },
+    }
 }
