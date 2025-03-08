@@ -1,12 +1,9 @@
 {
-    "domain": "adhan",
-    "name": "Adhan Prayer Times",
-    "version": "1.0.0",
-    "documentation": "https://github.com/joohann/adhan",
-    "requirements": ["requests"],
-    "dependencies": [],
-    "codeowners": ["@joohann"],
-    "config_flow": true,
-    "iot_class": "cloud_polling"
-    "icon": "/local/custom_components/adhan/adhan_icon.png"
+  "domain": "adhan",
+  "name": "Adhan Prayer Times",
+  "version": "1.0.0",
+  "documentation": "https://github.com/gebruikersnaam/adhan",
+  "requirements": ["requests"],
+  "codeowners": ["@gebruikersnaam"],
+  "iot_class": "cloud_polling"
 }
