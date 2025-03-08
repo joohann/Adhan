@@ -1,0 +1,17 @@
+{
+  "title": "Adhan Prayer Times",
+  "step": {
+    "user": {
+      "title": "Configure Adhan",
+      "description": "Set up your Adhan prayer time integration.",
+      "data": {
+        "city": "City",
+        "country": "Country",
+        "method": "Calculation Method"
+      }
+    }
+  },
+  "error": {
+    "invalid_location": "Invalid city or country provided."
+  }
+}
