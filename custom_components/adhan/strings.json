@@ -1,0 +1,28 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "description": "Configure prayer times based on your city, country, and calculation method.",
+        "data": {
+          "city": "The city where you want prayer times for.",
+          "country": "The country where the city is located.",
+          "method": "The calculation method to use."
+        }
+      }
+    },
+    "error": {
+      "invalid_location": "The city or country you entered is invalid."
+    },
+    "abort": {
+      "already_configured": "The city is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Update Adhan Settings",
+        "description": "Adjust the settings for your Adhan integration."
+      }
+    }
+  }
+}
