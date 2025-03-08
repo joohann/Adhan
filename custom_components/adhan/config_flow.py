@@ -1,46 +1,36 @@
+import logging
 from homeassistant import config_entries
+from homeassistant.util.json import json_loads
 from .const import DOMAIN, CONF_CITY, CONF_COUNTRY, CONF_METHOD
 
+_LOGGER = logging.getLogger(__name__)
+
 class AdhanConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-    """Config flow for Adhan integration."""
+    """Handle a config flow for Adhan Prayer Times."""
+    
+    def __init__(self):
+        """Initialize the flow."""
+        self._location = None
+        self._country = None
+        self._method = None
+    
+    def load_config(self):
+        """Laad de configuratie vanuit een JSON-bestand."""
+        try:
+            with open("path/to/your/config.json", "r") as file:
+                config_data = json_loads(file.read())  # Nieuwe functie
+            return config_data
+        except Exception as e:
+            _LOGGER.error(f"Error loading configuration: {e}")
+            return None
 
-    VERSION = 1
+    def handle(self):
+        """Handle the configuration."""
+        # Configuratie logica
+        config_data = self.load_config()
+        if config_data:
+            self._location = config_data.get(CONF_CITY)
+            self._country = config_data.get(CONF_COUNTRY)
+            self._method = config_data.get(CONF_METHOD)
 
-    async def async_step_user(self, user_input=None):
-        """Handle the initial step."""
-        errors = {}
-
-        if user_input is not None:
-            # Validatie
-            city = user_input[CONF_CITY]
-            country = user_input[CONF_COUNTRY]
-            method = user_input[CONF_METHOD]
-
-            # Eventueel validatie of de input correct is
-            if not city or not country:
-                errors["base"] = "invalid_location"
-            else:
-                # Sla configuratie op en voltooi
-                return self.async_create_entry(
-                    title=f"Adhan ({city}, {country})",
-                    data=user_input,
-                )
-
-        return self.async_show_form(
-            step_id="user",
-            data_schema=self.add_data_schema(),
-            errors=errors,
-        )
-
-    def add_data_schema(self):
-        """Voeg schema toe voor UI."""
-        from homeassistant.helpers import config_validation as cv
-        import voluptuous as vol
-
-        return vol.Schema(
-            {
-                vol.Required(CONF_CITY, default="Breukelen"): cv.string,
-                vol.Required(CONF_COUNTRY, default="Netherlands"): cv.string,
-                vol.Required(CONF_METHOD, default=3): vol.All(vol.Coerce(int), vol.Range(min=1, max=12)),
-            }
-        )
+        return self.async_show_form(step_id="user")
